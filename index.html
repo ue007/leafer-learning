@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- <script src="../libs/web.js"></script> -->
+    <script src="https://unpkg.com/leafer-ui@1.0.9/dist/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        // LeaferUI.Debug.enable = true
+
+        // const debug = LeaferUI.Debug.get('CustomType') // [!code hl:7]
+        // debug.log('content1', 'content2') // CustomType content1 content2
+        // debug.warn('content')
+        // debug.error('content')
+
+        const from = new LeaferUI.Box({
+          x: 100,
+          y: 100,
+          width: 100,
+          height: 80,
+          fill: '#FF4B4B',
+          cornerRadius: 20,
+          children: [
+            {
+              tag: 'Text',
+              text: 'From',
+              fill: 'black',
+              padding: [30, 40],
+            },
+          ],
+          draggable: true,
+        })
+
+        leafer.add(from)
+
+        const to = new LeaferUI.Box({
+          x: 500,
+          y: 500,
+          width: 100,
+          height: 80,
+          fill: '#FF4B4B',
+          cornerRadius: 20,
+          children: [
+            {
+              tag: 'Text',
+              text: 'To',
+              fill: 'black',
+              padding: [30, 40],
+            },
+          ],
+          draggable: true,
+        })
+
+        leafer.add(to)
+      }
+    </script>
+  </body>
+</html>
