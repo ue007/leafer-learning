@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+    <script src="../libs/arrow.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window });
+        
+        const title = new LeaferUI.Text({
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning. ",
+        });
+
+        leafer.add(title);
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: "rgb(255,0,0)",
+          text: "请打开控制台，查看leafer数据结构信息. ",
+        });
+
+        leafer.add(content);
+
+        console.log(
+          "图片对象，支持使用 svg 格式的图片，另外所有图形都支持通过 图案填充 来显示图片。"
+        );
+
+        const arrow = new LeaferIN.arrow.Arrow({
+          x:100,
+          y: 100,
+          endArrow: "arrow", // [!code hl:1]
+          strokeWidth: 5,
+          stroke: "rgb(50,205,121)",
+        });
+
+        leafer.add(arrow);
+
+        console.log(leafer);
+      }
+    </script>
+  </body>
+</html>
