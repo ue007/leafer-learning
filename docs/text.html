@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="./libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const text = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning.',
+        });
+
+        leafer.add(text);
+      }
+    </script>
+  </body>
+</html>
