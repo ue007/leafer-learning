@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="./libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const rect = LeaferUI.Rect.one(
+          {
+            fill: '#32cd79',
+          },
+          0,
+          30
+        )
+        leafer.add(rect)
+
+        let event = leafer.on_(LeaferUI.RenderEvent.NEXT, (e) => {
+          console.log(e)
+          rect.rotateOf('center', 5)
+          rect.move(5, 0)
+          if (rect.x > 700) rect.x = 0
+        })
+
+        rect.on(LeaferUI.PointerEvent.DOWN, (e) => {
+          console.log(e)
+          leafer.off_(event)
+        })
+
+        rect.on(LeaferUI.PointerEvent.UP, (e) => {
+          console.log(e)
+          event = leafer.on_(LeaferUI.RenderEvent.NEXT, (e) => {
+            console.log(e)
+            rect.rotateOf('center', 5)
+            rect.move(5, 0)
+            if (rect.x > 700) rect.x = 0
+          });
+        })
+      }
+    </script>
+  </body>
+</html>
