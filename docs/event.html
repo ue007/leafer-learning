@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="./libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看Event信息. ',
+        })
+
+        leafer.add(content)
+
+        const rect = LeaferUI.Rect.one(
+          {
+            fill: '#32cd79',
+            draggable: true,
+            event: {
+              [LeaferUI.PointerEvent.ENTER]: (e) => {
+                console.log(e)
+                e.current.fill = '#42dd89'
+              },
+              [LeaferUI.PointerEvent.LEAVE]: (e) => {
+                console.log(e)
+                e.current.fill = '#32cd79'
+              },
+              [LeaferUI.PointerEvent.DOWN]: (e) => {
+                console.log(e)
+                e.current.fill = '#FF9966'
+              },
+              [LeaferUI.PointerEvent.UP]: (e) => {
+                console.log(e)
+                e.current.fill = '#32cd79'
+              },
+            },
+          },
+          100,
+          100,
+          200,
+          200
+        )
+
+        leafer.add(rect);
+      }
+    </script>
+  </body>
+</html>
