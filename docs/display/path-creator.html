@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看leafer数据结构信息. ',
+        })
+
+        leafer.add(content)
+
+        console.log('创建路径。可以画出任意形状的图形， 了解 绘图命令。')
+
+        const drawer = new LeaferUI.PathCreator() // [!code hl:4]
+        drawer
+          .moveTo(40, 30)
+          .bezierCurveTo(70, 30, 90, 60, 63, 80)
+          .quadraticCurveTo(50, 88, 40, 80)
+          .bezierCurveTo(10, 60, 50, 40, 40, 30)
+
+        leafer.add(
+          new LeaferUI.Path({
+            x: 100,
+            y: 100,
+            path: drawer.path,
+            fill: 'orange',
+          })
+        )
+
+        console.log(leafer)
+        console.log(leafer.children)
+      }
+    </script>
+  </body>
+</html>
