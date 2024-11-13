@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+    <script src="../libs/arrow.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window });
+
+        const title = new LeaferUI.Text({
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning. ",
+        });
+
+        leafer.add(title);
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: "rgb(255,0,0)",
+          text: "请打开控制台，查看leafer数据结构信息. ",
+        });
+
+        leafer.add(content);
+
+        const text = new HTMLText({
+          text: '<i style="color: red; font-weight: bold;">Welcome</i> to <i style="color: rgb(50,205,121); font-size: 30px">LeaferJS</i>',
+        });
+        leafer.add(text);
+        console.log(leafer);
+      }
+    </script>
+  </body>
+</html>
