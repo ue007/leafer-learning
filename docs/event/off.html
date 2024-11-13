@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看Event信息.  双击off事件监听. 测试事件无法Off',
+        })
+
+        leafer.add(content)
+
+        function onEnter(e) {
+          console.log(e)
+          e.current.fill = '#42dd89'
+        }
+
+        function onLeave(e) {
+          console.log(e)
+          e.current.fill = '#32cd79'
+        }
+
+        function onMouseDown(e) {
+          console.log(e)
+          e.current.fill = '#FF9966'
+        }
+
+        function onMouseUp(e) {
+          console.log(e)
+          e.current.fill = '#32cd79'
+        }
+
+        const rect = LeaferUI.Rect.one(
+          {
+            fill: '#32cd79',
+            draggable: true,
+            // event: {
+            //   [LeaferUI.PointerEvent.DOUBLE_CLICK]: (e) => {
+            //     console.log(e)
+            //     e.current.fill = '#cdcdcd'
+
+            //   },
+            // },
+          },
+          100,
+          100,
+          100,
+          100
+        )
+
+        rect.on(LeaferUI.PointerEvent.ENTER, onEnter)
+        rect.on(LeaferUI.PointerEvent.LEAVE, onLeave)
+        rect.on(LeaferUI.PointerEvent.DOWN, onMouseDown)
+        rect.on(LeaferUI.PointerEvent.UP, onMouseUp)
+
+        rect.on(LeaferUI.PointerEvent.DOUBLE_CLICK, (e) => {
+          console.log(e)
+          e.current.fill = '#cdcdcd'
+
+          rect.off(LeaferUI.PointerEvent.ENTER, onEnter, true) // [!code hl:2]
+          rect.off(LeaferUI.PointerEvent.LEAVE, onLeave, true)
+          rect.off(LeaferUI.PointerEvent.DOWN, onMouseDown, true)
+          rect.off(LeaferUI.PointerEvent.UP, onMouseUp, true)
+        })
+
+        leafer.add(rect)
+
+        const rect2 = new LeaferUI.Rect({
+          x: 200,
+          y: 200,
+          fill: '#32cd79',
+          draggable: true,
+        })
+
+        leafer.add(rect2)
+
+        function onEnter(e) {
+          e.current.fill = '#42dd89'
+        }
+
+        function onLeave(e) {
+          e.current.fill = '#32cd79'
+        }
+
+        rect2.on(LeaferUI.PointerEvent.ENTER, onEnter)
+        rect2.on(LeaferUI.PointerEvent.LEAVE, onLeave)
+
+        rect2.off(LeaferUI.PointerEvent.ENTER, onEnter, true) // [!code hl:2]
+        rect2.off(LeaferUI.PointerEvent.LEAVE, onLeave, { capture: true })
+      }
+    </script>
+  </body>
+</html>
