@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="./libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看Debug信息. ',
+        })
+
+        leafer.add(content)
+
+        LeaferUI.Debug.enable = true
+
+        const debug = LeaferUI.Debug.get('CustomType') // [!code hl:7]
+
+        debug.log('content1', 'content2') // CustomType content1 content2
+
+        debug.warn('content')
+
+        debug.error('content')
+      }
+    </script>
+  </body>
+</html>
