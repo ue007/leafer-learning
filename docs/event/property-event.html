@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看Event信息. ',
+        })
+
+        leafer.add(content)
+
+        const rect = new LeaferUI.Rect({
+          x: 100,
+          y: 100,
+          fill: '#32cd79',
+          draggable: true,
+        })
+
+        leafer.add(rect)
+
+        function onReady() {
+          leafer.on(LeaferUI.PropertyEvent.CHANGE, function (e) {
+            // [!code hl:9]
+            console.log('leafer', e.target, e.attrName, e.newValue, e.oldValue)
+          })
+
+          rect.on(LeaferUI.PropertyEvent.CHANGE, function (e) {
+            console.log('leaf', e.target, e.attrName, e.newValue, e.oldValue)
+          })
+
+          rect.fill = 'blue'
+        }
+
+        leafer.on(LeaferUI.LeaferEvent.READY, onReady)
+
+        console.log(leafer)
+      }
+    </script>
+  </body>
+</html>
