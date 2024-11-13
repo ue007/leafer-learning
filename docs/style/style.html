@@ -4,7 +4,7 @@
     <title>Demo | Leafer UI</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <script src="./libs/web.js"></script>
+    <script src="../libs/web.js"></script>
   </head>
   <body onload="init()">
     <script>
@@ -48,6 +48,10 @@
         rect.reset() // 完全重置
 
         rect.reset({
+          x: 100,
+          y: 100,
+          width: 200,
+          height: 200,
           // 重置为新样式
           stroke: 'blue',
           strokeWidth: 4,
