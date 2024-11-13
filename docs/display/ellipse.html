@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window })
+
+        const title = new LeaferUI.Text({
+          fill: 'rgb(0,0,0)',
+          text: 'Welcome to LeaferJS Learning. ',
+        })
+
+        leafer.add(title)
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: 'rgb(255,0,0)',
+          text: '请打开控制台，查看leafer数据结构信息. ',
+        })
+
+        leafer.add(content)
+
+        console.log(
+          '绘制圆、圆环、扇形圆环、扇形、弧线、椭圆，想从中心点绘制，可以了解 around。'
+        )
+
+        const ellipse = new LeaferUI.Ellipse({
+          x: 200,
+          y: 200,
+          width: 100,
+          height: 100,
+          startAngle: -60,
+          endAngle: 180,
+          innerRadius: 1,
+          stroke: 'rgb(50,205,121)',
+          strokeWidth: 10,
+          strokeAlign: 'center',
+          strokeCap: 'round',
+          draggable: true,
+        })
+
+        leafer.add(ellipse)
+
+        console.log(leafer)
+        console.log(leafer.children)
+
+      }
+    </script>
+  </body>
+</html>
