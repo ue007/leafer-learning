@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+    <script src="../libs/editor.js"></script>
+    <script src="../libs/robot.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window });
+
+        const title = new LeaferUI.Text({
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning. ",
+        });
+
+        leafer.add(title);
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: "rgb(255,0,0)",
+          text: "请打开控制台，查看leafer数据结构信息. 请上下左右移动方向键",
+        });
+
+        leafer.add(content);
+
+        const robot = new LeaferIN.Robot.Robot({
+          x:100,
+          y:100,
+          robot: {
+            url: "../assets/arrows.png",
+            size: { width: 100, height: 100 },
+            total: 20,
+            x:100,
+            y:100,
+          },
+          actions: {
+            // 预设游戏动作（通过动作帧）
+            up: 0, // 静止向上的箭头（ 编号为0的动作帧）
+            right: 5,
+            down: 10,
+            left: 15,
+            arrowUp: [0, 1, 2, 3, 4], // 动态向上的箭头（循环播放编号为 1-4 的动作帧）
+            arrowRight: [5, 6, 7, 8, 9],
+            arrowDown: [10, 11, 12, 13, 14],
+            arrowLeft: [15, 16, 17, 18, 19],
+          },
+          action: "right", // 设置动作：静止向右的箭头
+        });
+
+        leafer.add(robot);
+
+        // 监听方向键进行交互
+
+        let speed = 5;
+
+        leafer.on(LeaferUI.KeyEvent.DOWN, (e) => {
+          speed++;
+          switch (
+            e.code // 动态的方向箭头
+          ) {
+            case "ArrowUp":
+              robot.action = "arrowUp";
+              robot.y -= speed;
+              break;
+            case "ArrowDown":
+              robot.action = "arrowDown";
+              robot.y += speed;
+              break;
+            case "ArrowLeft":
+              robot.action = "arrowLeft";
+              robot.x -= speed;
+              break;
+            case "ArrowRight":
+              robot.action = "arrowRight";
+              robot.x += speed;
+              break;
+          }
+        });
+
+        leafer.on(LeaferUI.KeyEvent.UP, (e) => {
+          speed = 5;
+          switch (
+            e.code // 静态的方向箭头
+          ) {
+            case "ArrowUp":
+              robot.action = "up";
+              break;
+            case "ArrowDown":
+              robot.action = "down";
+              break;
+            case "ArrowLeft":
+              robot.action = "left";
+              break;
+            case "ArrowRight":
+              robot.action = "right";
+              break;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
