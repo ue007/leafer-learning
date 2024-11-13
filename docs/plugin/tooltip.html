@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo | Leafer UI</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="../libs/web.js"></script>
+    <script src="../libs/editor.js"></script>
+    <script src="../libs/tooltip.js"></script>
+  </head>
+  <body onload="init()">
+    <script>
+      function init() {
+        var leafer = new LeaferUI.Leafer({ view: window });
+
+        const title = new LeaferUI.Text({
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning. ",
+        });
+
+        leafer.add(title);
+
+        const content = new LeaferUI.Text({
+          x: 0,
+          y: 20,
+          fill: "rgb(255,0,0)",
+          text: "请打开控制台，查看leafer数据结构信息. 请上下左右移动方向键",
+        });
+
+        leafer.add(content);
+
+        const box = new LeaferUI.Box({
+          x: 200,
+          y: 200,
+          width: 100,
+          height: 80,
+          fill: "#FF4B4B",
+          cornerRadius: 20,
+          // overflow: 'hide',
+          children: [
+            {
+              tag: "Text",
+              text: "normal box",
+              fill: "black",
+              padding: [30, 20],
+            },
+          ],
+          draggable: true,
+        });
+        leafer.add(box);
+
+        const ellipse = new LeaferUI.Ellipse({
+          x: 60,
+          y: 60,
+          width: 50,
+          height: 50,
+          fill: "#FEB027",
+          draggable: true,
+        });
+        box.add(ellipse);
+
+        const box2 = new LeaferUI.Box({
+          x: 400,
+          y: 200,
+          width: 100,
+          height: 80,
+          fill: "#FF4B4B",
+          cornerRadius: 20,
+          overflow: "hide",
+          children: [
+            {
+              tag: "Text",
+              text: "overflow box",
+              fill: "black",
+              padding: [30, 20],
+            },
+          ],
+          draggable: true,
+        });
+        leafer.add(box2);
+
+        const ellipse2 = new LeaferUI.Ellipse({
+          x: 60,
+          y: 60,
+          width: 50,
+          height: 50,
+          fill: "#FEB027",
+          draggable: true,
+        });
+        box2.add(ellipse2);
+
+        // 创建插件实例
+        const plugin = new LeaferX.tooltip.TooltipPlugin(leafer, {
+          getContent(node) {
+            const dom = `<ul style="list-style: none; margin: 0; padding: 0">
+      <li>节点类型：${node.tag}</li>
+      <li>宽度：${node.width}</li>
+      <li>高度：${node.height}</li>
+    </ul>
+    `;
+            return dom;
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
