@@ -9,14 +9,53 @@
   <body onload="init()">
     <script>
       function init() {
-        var leafer = new LeaferUI.Leafer({ view: window })
+        var leafer = new LeaferUI.Leafer({ view: window });
 
         const text = new LeaferUI.Text({
-          fill: 'rgb(0,0,0)',
-          text: 'Welcome to LeaferJS Learning.',
-        })
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning.",
+        });
 
-        leafer.add(text)
+        leafer.add(text);
+
+        const parent = new LeaferUI.Box({
+          x: 100,
+          y: 100,
+          width: 200,
+          height: 200,
+          fill: "#cdcdcd",
+          stroke: "black",
+          strokeWidth: 2,
+          cornerRadius: 20,
+          draggable: true,
+        });
+        leafer.add(parent);
+
+        const box = new LeaferUI.Box({
+          x: 100,
+          y: 100,
+          // width:200,
+          // height:200,
+          fill: "#FF4B4B",
+          cornerRadius: 20,
+          draggable: true,
+          children: [
+            {
+              tag: "Text",
+              text: "Welcome to LeaferJS",
+              fill: "black",
+              // padding: [100, 100],
+              textAlign: "center",
+              verticalAlign: "middle",
+              lineHeight: {
+                type: "percent",
+                value: 5, // 150%
+              },
+            },
+          ],
+        });
+
+        parent.add(box);
       }
     </script>
   </body>
