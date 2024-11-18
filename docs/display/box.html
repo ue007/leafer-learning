@@ -9,75 +9,77 @@
   <body onload="init()">
     <script>
       function init() {
-        var leafer = new LeaferUI.Leafer({ view: window })
+        var leafer = new LeaferUI.Leafer({
+          view: window,
+          move: { dragOut: true },
+        });
 
         const title = new LeaferUI.Text({
-          fill: 'rgb(0,0,0)',
-          text: 'Welcome to LeaferJS Learning. ',
-        })
+          fill: "rgb(0,0,0)",
+          text: "Welcome to LeaferJS Learning. ",
+        });
 
-        leafer.add(title)
+        leafer.add(title);
 
         const box = new LeaferUI.Box({
           x: 200,
           y: 200,
           width: 100,
           height: 80,
-          fill: '#FF4B4B',
+          fill: "#FF4B4B",
           cornerRadius: 20,
           // overflow: 'hide',
           children: [
             {
-              tag: 'Text',
-              text: 'normal box',
-              fill: 'black',
+              tag: "Text",
+              text: "normal box",
+              fill: "black",
               padding: [30, 20],
             },
           ],
           draggable: true,
-        })
-        leafer.add(box)
+        });
+        leafer.add(box);
 
         const ellipse = new LeaferUI.Ellipse({
           x: 60,
           y: 60,
           width: 50,
           height: 50,
-          fill: '#FEB027',
+          fill: "#FEB027",
           draggable: true,
-        })
-        box.add(ellipse)
-
+        });
+        box.add(ellipse);
 
         const box2 = new LeaferUI.Box({
           x: 400,
           y: 200,
           width: 100,
           height: 80,
-          fill: '#FF4B4B',
+          fill: "#FF4B4B",
           cornerRadius: 20,
-          overflow: 'hide',
+          overflow: "hide",
           children: [
             {
-              tag: 'Text',
-              text: 'overflow box',
-              fill: 'black',
+              tag: "Text",
+              text: "overflow box",
+              fill: "black",
               padding: [30, 20],
             },
           ],
           draggable: true,
-        })
-        leafer.add(box2)
+        });
+        leafer.add(box2);
 
         const ellipse2 = new LeaferUI.Ellipse({
           x: 60,
           y: 60,
           width: 50,
           height: 50,
-          fill: '#FEB027',
+          fill: "#FEB027",
           draggable: true,
-        })
-        box2.add(ellipse2)
+        });
+        box2.add(ellipse2);
       }
     </script>
   </body>
