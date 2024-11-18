@@ -10,44 +10,66 @@
   <body onload="init()">
     <script>
       function init() {
-        var leafer = new LeaferUI.Leafer({ view: window })
-
-        const flow = new LeaferIN.flow.Flow({
+        var leafer = new LeaferUI.Leafer({ view: window });
+        const box = new LeaferUI.Box({
           x: 100,
           y: 100,
-          width: 260,
-          height: 260,
-          flow: 'x',
-          gap: { x: 'auto', y: 20 },
-          fill: 'gray',
+          width: 500,
+          height: 500,
+          fill: "#FF4B4B",
+          cornerRadius: 20,
+          // overflow: 'hide',
+          children: [
+            {
+              tag: "Text",
+              text: "normal box",
+              fill: "black",
+              padding: [30, 20],
+            },
+          ],
+          draggable: true,
+        });
+        leafer.add(box);
+
+        const flow = new LeaferIN.flow.Flow({
+          x: 50,
+          y: 50,
+          width: 400,
+          height: 400,
+          flow: "y",
+          // gap: { x: 0, y: "auto" },
+          fill: "gray",
           flowAlign: {
-            content: 'top',
-            x: 'from',
+            content: "bottom-left",
+            // x: "from",
           },
           flowWrap: true,
-          draggable: true,
-        })
+          draggable: false,
+        });
 
         const rect = new LeaferUI.Rect({
-          fill: 'red',
+          fill: "orange",
           draggable: true,
+          width:60,
+          height:60
+        });
 
-        })
         const star = new LeaferUI.Star({
-          fill: 'green',
-          x: 800,
-          height: 100,
+          fill: "green",
+          width:60,
+          height:60,
           draggable: true,
+        });
 
-        })
         const ellipse = new LeaferUI.Ellipse({
-          fill: 'blue',
+          fill: "blue",
+          width:60,
+          height:60,
           draggable: true,
+        });
+        flow.addMany(rect, star, ellipse);
 
-        })
-        flow.addMany(rect, star, ellipse)
-
-        leafer.add(flow)
+        box.add(flow);
       }
     </script>
   </body>
