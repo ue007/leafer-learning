@@ -9,7 +9,14 @@
   <body onload="init()">
     <script>
       function init() {
+<<<<<<< HEAD
         var leafer = new LeaferUI.Leafer({ view: window });
+=======
+        var leafer = new LeaferUI.Leafer({
+          view: window,
+          move: { dragOut: true },
+        });
+>>>>>>> c07e28743066c4961367c7a05ec8cf59de5f3694
 
         const title = new LeaferUI.Text({
           fill: "rgb(0,0,0)",
@@ -77,8 +84,6 @@
           draggable: true,
         });
         box2.add(ellipse2);
-
-        
       }
     </script>
   </body>
