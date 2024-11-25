@@ -42,7 +42,42 @@
 
         leafer.add(arrow);
 
+
+        const arrow_path = new LeaferIN.arrow.Arrow({
+          endArrow: "arrow", // [!code hl:1]
+          strokeWidth: 5,
+          stroke: "rgb(50,205,121)",
+          points:[200,200,200,250,400,200,500,300],
+          curve:true,
+        });
+
+        leafer.add(arrow_path);
+
+        const line1 = new LeaferIN.arrow.Arrow({
+          x: 100,
+          y: 100,
+          endArrow: "arrow", // [!code hl:1]
+          points: [0, 90, 20, 60, 40, 80, 60, 40, 75, 50, 90, 10, 100, 90], // [x,y, x,y ...]
+          curve: true,
+          strokeWidth: 5,
+          stroke: 'rgb(50,205,121)',
+        })
+        leafer.add(line1);
         console.log(leafer);
+
+        const line5 = new LeaferUI.Line({
+          x: 100,
+          y: 300,
+          // toPoint: { x: 100, y: 100 },
+          endArrow: "arrow", // [!code hl:1]
+          points: [0, 90, 20, 60, 40, 80, 60, 40, 75, 50, 90, 10, 100, 90], // [x,y, x,y ...]
+          curve: true,
+          strokeWidth: 5,
+          stroke: 'rgb(50,205,121)',
+          draggable: true,
+        })
+
+        leafer.add(line5)
       }
     </script>
   </body>
